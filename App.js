@@ -14,12 +14,20 @@ export default function App() {
   const [novaTarefa,setnovaTarefa] = useState('');
   
   function addTarefas(){
-    const task = [{
+
+    const novatarefa = {
       id : String(Date.now()),
       titulo : novaTarefa
-   } ]
+   } 
+
+    setTarefas ([...tarefas,novatarefa]);
+    setnovaTarefa("")
   }
 
+
+ 
+
+  
   return (
     <View style={styles.container}>
     <Text style={styles.titulo}>Lista de Tarefas</Text>
@@ -36,13 +44,13 @@ export default function App() {
 
   <TextInput
     style={styles.input}
-    value={novaTarefa}
     onChangeText={ (texto)=>setnovaTarefa(texto) }
+    value={novaTarefa}
     placeholder= "Digite uma tarefa"
     textAlign= 'center'
   />
 
-    <TouchableOpacity style={styles.btnAdicionar}><text>Adicionar tarefa</text></TouchableOpacity>
+    <TouchableOpacity onPress={addTarefas} style={styles.btnAdicionar}><text>Adicionar tarefa</text></TouchableOpacity>
 
     </View>
   );
